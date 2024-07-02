@@ -1,6 +1,8 @@
 import express from 'express';
 import envs from 'dotenv';
+import cors from "cors"
 import cookieParser from 'cookie-parser';
+import lecHallRoute from './routes/lecHallRoutes.js'
 
 import { sequelize , connectToDb } from './config/db.js';
 
@@ -8,17 +10,15 @@ const app = express();
 const dotenv = envs.config();
 const PORT = process.env.PORT || 4000;
 
-// Default Entry Point
-app.use('/', (req, res) => {
-    res.send("Server Response");
-})
 
 // Internal Middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors())
+
 
 // Routes
-// app.use("/api/v1/user", authRoute);
+app.use("/api/v1/lectureHall", lecHallRoute);
 
 // middlewares
 // app.use(notFound);
