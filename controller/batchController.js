@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler"
 import Batch from "../models/batchModel.js"
+import Student from "../models/studentModel.js";
 
 // add a Batch
 const addBatch = asyncHandler(async(req,res)=>{
@@ -29,19 +30,24 @@ const getAllBatches = asyncHandler(async(req,res)=>{
 })
 
 // get a batch
-const getABatch = asyncHandler(async(req,res)=>{
-
+const getABatch = asyncHandler(async (req, res) => {
     const batchId = req.params._id;
 
     const batch = await Batch.findOne({
-        where: {
-            batchId: batchId
-        }
+        where: { batchId: batchId }
+    });
+
+    const students = await Student.findAll({
+        where:{batchId:batchId}
     })
 
-    res.status(200).json(batch);
-})
+    const data = {
+        batch: batch,
+        students:students
+    }
 
+    res.status(200).json(data);
+});
 
 // update a Batch
 const updateABatch = asyncHandler(async(req,res)=>{
