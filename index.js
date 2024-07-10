@@ -7,6 +7,8 @@ import batchRoute from './routes/batchRoutes.js'
 import studentRoute from './routes/studentRoutes.js'
 import lecturerRoute from './routes/lecturerRoutes.js'
 import timeTableRoute from './routes/timeTableRoute.js'
+import moduleRoute from './routes/moduleRoutes.js'
+
 
 import { sequelize , connectToDb } from './config/db.js';
 
@@ -27,6 +29,8 @@ app.use("/api/v1/batch",batchRoute)
 app.use("/api/v1/student",studentRoute)
 app.use("/api/v1/lecturer", lecturerRoute)
 app.use("/api/v1/timeTable", timeTableRoute)
+app.use("/api/v1/module", moduleRoute)
+
 
 
 // middlewares
