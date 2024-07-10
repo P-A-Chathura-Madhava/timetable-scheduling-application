@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import lecHallRoute from './routes/lecHallRoutes.js'
 import batchRoute from './routes/batchRoutes.js'
 import studentRoute from './routes/studentRoutes.js'
+import lecturerRoute from './routes/lecturerRoutes.js'
 
 import { sequelize , connectToDb } from './config/db.js';
 
@@ -23,6 +24,7 @@ app.use(cors())
 app.use("/api/v1/lectureHall", lecHallRoute);
 app.use("/api/v1/batch",batchRoute)
 app.use("/api/v1/student",studentRoute)
+app.use("/api/v1/lecturer", lecturerRoute)
 
 
 // middlewares
