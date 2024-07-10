@@ -89,7 +89,7 @@ const student = await Student.findOne({
 
 await student.destroy();
 
-res.status(204).json({message: 'batch deleted'});
+res.status(204).json({message: 'student deleted'});
 })
 
 
